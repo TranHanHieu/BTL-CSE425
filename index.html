@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Gas Station - CSE425</title>
+
+  <link rel="stylesheet" href="src/leaflet.css" />
+  <link rel="stylesheet" href="src/css/bootstrap.css" />
+  <script src="src/leaflet-src.js"></script>
+  <script src="src/jquery-3.2.0.min.js"></script>
+  <script src="src/js-func.js"></script>
+
+  <style>
+    #mapdiv {
+      height: 100vh;
+      width: 100vw;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="side-bar" class="col-md-3"></div>
+  <div id="mapdiv" class="col-md-9"></div>
+  <script>
+    var map;
+
+    $(document).ready(function () {
+      map = L.map('mapdiv', {
+        center: [21.012, 105.818],
+        zoom: 16,
+        minZoom: 15
+      });
+      lyrOSM = L.tileLayer.wms('http://localhost:8080/geoserver/cse425/wms?', {
+        layers: 'cse425:DongDaDistrict',
+      });
+      map.addLayer(lyrOSM);
+    });
+  </script>
+</body>
+
+</html>
